@@ -1,0 +1,23 @@
+{
+  "name": "PollReal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kylebuch8/PollReal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylebuch8/PollReal/issues"
+  },
+  "homepage": "https://github.com/kylebuch8/PollReal",
+  "dependencies": {
+    "browser-sync": "^2.2.2",
+    "gulp": "^3.8.11"
+  }
+}
