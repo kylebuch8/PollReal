@@ -1,13 +1,13 @@
-<div ng-if="!data.questions[data.current].active">
-    Nothing active
-</div>
+<div class="container">
+    <div ng-if="!data.questions[data.current].active">
+        Nothing active
+    </div>
 
-{{data.questions[$scope.data.current].answers[data.questions[$scope.data.current].active]}}
+    <div ng-if="data.questions[data.current].active">
+        <h1>{{data.questions[data.current].question}}</h1>
 
-<div ng-if="data.questions[data.current].active">
-    {{data.questions[data.current].question}}
-
-    <div ng-repeat="answer in data.questions[data.current].answers">
-        <label><input type="radio" name="name" ng-model="$parent.userAnswer.selected" ng-value="answer.text" ng-change="update($index)"> {{answer.text}}</label>
+        <div ng-repeat="answer in data.questions[data.current].answers">
+            <label><input type="radio" name="name" ng-model="$parent.userAnswer.selected" ng-value="answer.text" ng-change="update($index)"> {{answer.text}}</label>
+        </div>
     </div>
 </div>
