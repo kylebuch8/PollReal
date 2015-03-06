@@ -20,7 +20,7 @@
         }])
         .directive('prModerator', ['$firebaseObject', function($firebaseObject) {
             function link(scope, element, attrs) {
-                var ref = new Firebase('https://pollreal.firebaseio.com/sessions/'+scope.poll);
+                var ref = new Firebase('<FIREBASEURL>/sessions/'+scope.poll);
                 var syncObject = $firebaseObject(ref);
                 syncObject.$bindTo(scope, "data");
                 
