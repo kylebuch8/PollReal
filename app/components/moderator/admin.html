@@ -1,0 +1,13 @@
+<h2 ng-bind="data.title"></h2>
+<div ng-repeat="question in data.questions">
+    <h3 ng-bind="question.question"></h3>
+    <label><input type="checkbox" ng-bind="question.active"> Active</label>    
+    <ul>
+        <li ng-repeat="answer in question.answers">
+            <label><input ng-value="answer.text"></label>
+        </li>
+    </ul>
+    <button ng-click="question.answers.push({responses:0,text:''})">Add Answer</button>
+</div>
+
+<pre ng-bind="data | json"></pre>

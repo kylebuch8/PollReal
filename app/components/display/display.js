@@ -9,7 +9,7 @@
 
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
-                .when('/display', {
+                .when('/:id/display', {
                     templateUrl: 'components/display/display.html',
                     controller: 'DisplayController'
                 });

@@ -9,7 +9,7 @@
 
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
-                .when('/', {
+                .when('/:id/', {
                     templateUrl: 'components/user/user.html',
                     controller: 'UserController'
                 });
