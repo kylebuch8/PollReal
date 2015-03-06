@@ -2,6 +2,8 @@
     Nothing active
 </div>
 
+{{data.questions[$scope.data.current].answers[data.questions[$scope.data.current].active]}}
+
 <div ng-if="data.questions[data.current].active">
     {{data.questions[data.current].question}}
 
