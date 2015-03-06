@@ -29,15 +29,40 @@
 
                 $scope.update = function (index) {
                     if (typeof answerIndex !== 'undefined' && answerIndex !== index) {
-                        $scope.data.questions[$scope.data.current].answers[answerIndex].responses -= 1;
-                        $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+                        var oldUpdateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + answerIndex + '/responses');
+                        var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
+
+
+                        oldUpdateRef.transaction(function (currentNumResponses) {
+                            return currentNumResponses -= 1;
+                        });
+
+                        updateRef.transaction(function (currentNumResponses) {
+                            return currentNumResponses += 1;
+                        });
 
                         answerIndex = index;
                         return;
                     }
 
-                    $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+                    var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
+
+                    updateRef.transaction(function (currentNumResponses) {
+                        return currentNumResponses += 1;
+                    });
+
                     answerIndex = index;
+
+                    // if (typeof answerIndex !== 'undefined' && answerIndex !== index) {
+                    //     $scope.data.questions[$scope.data.current].answers[answerIndex].responses -= 1;
+                    //     $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+                    //
+                    //     answerIndex = index;
+                    //     return;
+                    // }
+                    //
+                    // $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+                    // answerIndex = index;
                 };
             }
         ]);
