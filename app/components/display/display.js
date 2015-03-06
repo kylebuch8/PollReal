@@ -15,19 +15,16 @@
                 });
         }])
 
-        .controller('DisplayController', ['$scope', function ($scope) {
-            $scope.question = {
-                text: 'Some Question?',
-                answers: [
-                    {
-                        text: 'Answer 1',
-                        responses: 0
-                    },
-                    {
-                        text: 'Answer 2',
-                        responses: 0
-                    }
-                ]
-            };
-        }]);
+        .controller('DisplayController', [
+            '$scope',
+            '$routeParams',
+            '$firebaseObject',
+            'FIREBASE_URL',
+            function ($scope, $routeParams, $firebaseObject, FIREBASE_URL) {
+                var ref = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id),
+                    syncObject = $firebaseObject(ref);
+
+                syncObject.$bindTo($scope, 'data');
+            }
+        ]);
 }());

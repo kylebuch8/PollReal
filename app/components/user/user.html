@@ -7,8 +7,6 @@
 <div ng-if="data.questions[data.current].active">
     {{data.questions[data.current].question}}
 
-    {{userAnswer.selected}}
-
     <div ng-repeat="answer in data.questions[data.current].answers">
         <label><input type="radio" name="name" ng-model="$parent.userAnswer.selected" ng-value="answer.text" ng-change="update($index)"> {{answer.text}}</label>
     </div>
