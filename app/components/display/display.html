@@ -1,5 +1,5 @@
-{{question.text}}
+{{data.questions[data.current].question}}
 
-<div ng-repeat="answer in question.answers">
+<div ng-repeat="answer in data.questions[data.current].answers">
     <div>{{answer.text}} - {{answer.responses}}</div>
 </div>
