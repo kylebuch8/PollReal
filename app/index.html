@@ -2,8 +2,10 @@
 <html>
     <head>
         <title>Poll Real</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300,700,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="styles/app.css">
     </head>
-    <body ng-app="pollReal">
+    <body ng-app="pollReal" ng-style="{'background-color': bg, 'color': (bg) ? '#fff' : '#333'}">
 
         <ng-view></ng-view>
 
