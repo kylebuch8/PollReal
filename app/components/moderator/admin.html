@@ -1,13 +1,19 @@
-<h2 ng-bind="data.title"></h2>
-<div ng-repeat="question in data.questions">
-    <h3 ng-bind="question.question"></h3>
-    <label><input type="checkbox" ng-bind="question.active"> Active</label>    
-    <ul>
-        <li ng-repeat="answer in question.answers">
-            <label><input ng-value="answer.text"></label>
-        </li>
-    </ul>
-    <button ng-click="question.answers.push({responses:0,text:''})">Add Answer</button>
-</div>
+<h2 contenteditable="true" ng-model="data.title" ng-bind="data.title"></h2>
+<h3 contenteditable="true" ng-model="data.questions[data.current].question" ng-bind="data.questions[data.current].question"></h3>
+<label><input type="checkbox" ng-model="data.questions[data.current].active"> Active</label>    
+<ul>
+    <li ng-repeat="answer in data.questions[data.current].answers">
+        <label><input ng-value="answer.text" ng-model="answer.text"></label> - 
+        <span ng-bind="answer.responses"></span> 
+        <button ng-click="answer.responses = 0">Reset</button> -
+        <label><input ng-value="answer.color" ng-model="answer.color"></label>
+        <button ng-click="removeAnswer($index)">[-]</button>
+    </li>
+    <li><button ng-click="addAnswer()">[+]</button></li>
+</ul>
 
-<pre ng-bind="data | json"></pre>
+<div style="text-align:center;">
+    <button style="float:left;" ng-click="previousQuestion()" ng-bind="previous">&lt;-- Prev</button>
+    <span ng-bind="data.current"></span> | <span ng-bind="data.questions.length"></span>
+    <button style="float:right;" ng-click="nextQuestion()" ng-bind="next">Next --&gt;</button>
+</div>
