@@ -9,13 +9,27 @@
 
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
-                .when('/', {
+                .when('/:id', {
                     templateUrl: 'components/user/user.html',
                     controller: 'UserController'
                 });
         }])
 
-        .controller('UserController', [function () {
+        .controller('UserController', ['$scope', function ($scope) {
+            $scope.question = {
+                text: 'Some Question?',
+                answers: [
+                    {
+                        text: 'Answer 1'
+                    },
+                    {
+                        text: 'Answer 2'
+                    }
+                ]
+            };
 
+            $scope.change = function () {
+                console.log('changed');
+            };
         }]);
 }());

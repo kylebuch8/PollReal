@@ -1,1 +1,5 @@
-<h1>User</h1>
+{{question.text}}
+
+<div ng-repeat="answer in question.answers">
+    <label><input type="radio" name="name" ng-model="$index" ng-change="change()"> {{answer.text}}</label>
+</div>
