@@ -15,21 +15,30 @@
                 });
         }])
 
-        .controller('UserController', ['$scope', function ($scope) {
-            $scope.question = {
-                text: 'Some Question?',
-                answers: [
-                    {
-                        text: 'Answer 1'
-                    },
-                    {
-                        text: 'Answer 2'
-                    }
-                ]
-            };
+        .controller('UserController', [
+            '$scope',
+            '$routeParams',
+            '$firebaseObject',
+            'FIREBASE_URL',
+            function ($scope, $routeParams, $firebaseObject, FIREBASE_URL) {
+                var ref = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id),
+                    syncObject = $firebaseObject(ref),
+                    answerIndex;
 
-            $scope.change = function () {
-                console.log('changed');
-            };
-        }]);
+                syncObject.$bindTo($scope, "data");
+
+                $scope.update = function (index) {
+                    if (typeof answerIndex !== 'undefined' && answerIndex !== index) {
+                        $scope.data.questions[$scope.data.current].answers[answerIndex].responses -= 1;
+                        $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+
+                        answerIndex = index;
+                        return;
+                    }
+
+                    $scope.data.questions[$scope.data.current].answers[index].responses += 1;
+                    answerIndex = index;
+                };
+            }
+        ]);
 }());
