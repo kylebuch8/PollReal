@@ -15,7 +15,19 @@
                 });
         }])
 
-        .controller('DisplayController', [function () {
-            
+        .controller('DisplayController', ['$scope', function ($scope) {
+            $scope.question = {
+                text: 'Some Question?',
+                answers: [
+                    {
+                        text: 'Answer 1',
+                        responses: 0
+                    },
+                    {
+                        text: 'Answer 2',
+                        responses: 0
+                    }
+                ]
+            };
         }]);
 }());
