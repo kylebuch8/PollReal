@@ -35,7 +35,7 @@ h1 {
     height: 100%;
     display: -webkit-flex;
     display: flex;
-    -wekbit-align-items: center;
+    -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
