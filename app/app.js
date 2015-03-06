@@ -7,5 +7,7 @@
         'user',
         'moderator',
         'display'
-    ]);
+    ])
+
+        .constant('FIREBASE_URL', 'https://pollreal.firebaseio.com');
 }());
