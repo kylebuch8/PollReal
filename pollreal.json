@@ -1,0 +1,63 @@
+{
+    "sessions": {
+        "blah": {
+            "title": "Clothing Preferences",
+            "current": 0,
+            "questions": [ 
+                {
+                    "question": "Are you wearing pants?",
+                    "active": false,
+                    "totalResponses": 0,
+                    "answers": [ 
+                        { 
+                            "text": "Yes",
+                            "responses": 0,
+                            "color": "#3F51B5"
+                        },
+                        { 
+                            "text": "No",
+                            "responses": 0,
+                            "color": "#673AB7"
+                        },
+                        { 
+                            "text": "Commando",
+                            "responses": 0,
+                            "color": "#FFC107"
+                        }
+                    ]
+                },   
+                {
+                    "question": "Is your shirt striped?",
+                    "active": false,
+                    "totalResponses": 0,
+                    "answers": [ 
+                        { 
+                            "text": "Yes",
+                            "responses": 0,
+                            "color": "#FF5722"
+                        },
+                        { 
+                            "text": "No",
+                            "responses": 0,
+                            "color": "#673AB7"
+                        },
+                        { 
+                            "text": "Does Plaid Count?",
+                            "responses": 0,
+                            "color": "#009688"
+                        }
+                    ]
+                }   
+            ]            
+        }
+    },
+    "palette": [
+        "#3F51B5",
+        "#4CAF50",
+        "#FF5722",
+        "#673AB7",
+        "#F44336",
+        "#009688",
+        "#FFC107"
+    ]
+}
