@@ -39,7 +39,10 @@
                         }
 
                         $scope.values = answers.map(function (answer) {
-                            return answer.responses;
+                            return {
+                                responses: answer.responses,
+                                fillColor: answer.color
+                            };
                         });
 
                         topAnswer = $filter('orderBy')(answers, 'responses', true)[0];

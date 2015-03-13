@@ -37,15 +37,18 @@
                             data.datasets[0].data = labels.map(function () {
                                 return 0;
                             });
-                            
+
                             chart = chart.Bar(data);
                         });
 
                         scope.$watch('values', function (values) {
-                            chart.datasets[0].data = values;
+                            chart.datasets[0].data = values.map(function (value) {
+                                return value.responses;
+                            });
 
                             values.forEach(function (value, index) {
-                                chart.datasets[0].bars[index].value = value;
+                                chart.datasets[0].bars[index].value = value.responses;
+                                chart.datasets[0].bars[index].fillColor = value.fillColor;
                             });
 
                             chart.update();
