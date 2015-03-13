@@ -4,7 +4,8 @@
     /*global angular*/
     angular.module('display', [
         'ngRoute',
-        'ngAnimate'
+        'ngAnimate',
+        'directives.chart'
     ])
 
         .config(['$routeProvider', function ($routeProvider) {
@@ -31,6 +32,16 @@
 
                 $scope.$watch('data.questions[data.current].answers', function (answers) {
                     if (answers) {
+                        if (!$scope.labels) {
+                            $scope.labels = answers.map(function (answer) {
+                                return answer.text;
+                            });
+                        }
+
+                        $scope.values = answers.map(function (answer) {
+                            return answer.responses;
+                        });
+
                         topAnswer = $filter('orderBy')(answers, 'responses', true)[0];
                         if (topAnswer.responses > 0) {
                             $rootScope.bg = topAnswer.color;
