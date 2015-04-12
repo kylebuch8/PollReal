@@ -53,6 +53,7 @@
                         answerIndex = index;
                     }
 
+                    $scope.answerIndex = answerIndex;
                     $rootScope.bg = $scope.data.questions[$scope.data.current].answers[answerIndex].color;
                 };
             }

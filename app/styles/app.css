@@ -50,8 +50,14 @@ h1 {
     font-weight: 100;
 }
 
+h2,
+h3 {
+    font-weight: 300;
+}
+
 .container {
     height: 100%;
+    padding: 16px;
 }
 
 .presentation {
@@ -70,7 +76,8 @@ h1 {
 }
 
 .title h1 {
-    font-size: 60px;
+    font-size: 40px;
+    margin-bottom: 0;
 }
 
 .profile-pic {
@@ -78,4 +85,22 @@ h1 {
     height: 92px;
     border-radius: 50%;
     border: 3px solid white;
+}
+
+.answer-container {
+    margin: 10px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.checkbox {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.checkbox svg {
+    fill: white;
 }

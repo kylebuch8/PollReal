@@ -1,6 +1,6 @@
 <div class="container title" ng-if="!data.questions[data.current].active" style="background-color: #FF5330;" flex column center>
     <div class="presentation" flex column center>
-        <h1>Backbone.js</h1>
+        <h1>{{data.title}}</h1>
         <h3>Real Time Polling</h3>
     </div>
 
@@ -15,7 +15,16 @@
         <h1>{{data.questions[data.current].question}}</h1>
 
         <div ng-repeat="answer in data.questions[data.current].answers">
-            <label><input type="radio" name="name" ng-model="$parent.userAnswer.selected" ng-value="answer.text" ng-change="update($index)"> {{answer.text}}</label>
+            <div class="answer-container" flex center-items ng-click="update($index)">
+                <div class="checkbox" ng-style="{'background-color': answer.color}">
+                    <svg viewBox="0 0 24 24" width="100%" height="100%" ng-show="answerIndex === $index">
+                        <g id="check"><polygon points="9,16.2 4.8,12 3.4,13.4 9,19 21,7 19.6,5.6 "/></g>
+                    </svg>
+                </div>
+                <div class="label">
+                    {{answer.text}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
