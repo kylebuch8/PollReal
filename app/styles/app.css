@@ -24,7 +24,26 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #333;
     transition: all .25s ease-in-out;
-    padding: 16px;
+}
+
+[flex] {
+    display: -webkit-flex;
+    display: flex;
+}
+
+[column] {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+[center] {
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+[center-items] {
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 h1 {
@@ -33,10 +52,30 @@ h1 {
 
 .container {
     height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+}
+
+.presentation {
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+}
+
+.presenter {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.title h1 {
+    font-size: 60px;
+}
+
+.profile-pic {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 3px solid white;
 }
