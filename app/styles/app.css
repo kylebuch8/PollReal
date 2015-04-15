@@ -301,6 +301,9 @@ h1 {
   -o-transition: background-color 0.25s ease-in-out;
   transition: background-color 0.25s ease-in-out;
 }
+.question h1 {
+  padding-bottom: 30px;
+}
 .question.ng-enter,
 .question.ng-leave {
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
