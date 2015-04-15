@@ -4,6 +4,7 @@
     /*global angular*/
     angular.module('pollReal', [
         'firebase',
+        'home',
         'user',
         'moderator',
         'display'
