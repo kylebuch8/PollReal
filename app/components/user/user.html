@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="container" ng-if="data.questions[data.current].active" flex column center center-items>
+<div class="container question" ng-if="data.questions[data.current].active" flex column center center-items ng-style="{'background-color': bg, 'color': (bg) ? '#fff' : '#333'}">
     <div>
         <h1>{{data.questions[data.current].question}}</h1>
 
@@ -21,9 +21,7 @@
                         <g id="check"><polygon points="9,16.2 4.8,12 3.4,13.4 9,19 21,7 19.6,5.6 "/></g>
                     </svg>
                 </div>
-                <div class="label">
-                    {{answer.text}}
-                </div>
+                <div class="label">{{answer.text}}</div>
             </div>
         </div>
     </div>

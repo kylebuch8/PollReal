@@ -34,12 +34,57 @@
     border: 3px solid white;
 }
 
+.title.ng-enter {
+    .transition(opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946));
+    opacity: 1;
+}
+
+.title.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.title.ng-leave {
+    .transition(opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946));
+    opacity: 1;
+}
+
+.title.ng-leave.ng-leave-active {
+    opacity: 1;
+}
+
+.question {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    .transition(background-color .25s ease-in-out);
+}
+
+.question.ng-enter,
+.question.ng-leave {
+    .transition-transform(0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946));
+}
+
+.question.ng-enter,
+.question.ng-leave.ng-leave-active {
+    .translate3d(0, 100%, 0);
+}
+
+.question.ng-leave,
+.question.ng-enter.ng-enter-active {
+    .translate3d(0, 0, 0);
+}
+
 .answer-container {
-    margin: 10px;
+    margin: 10px 0;
     padding: 5px;
     background-color: white;
     border: 1px solid #ccc;
     color: #333;
+    cursor: pointer;
 }
 
 .checkbox {

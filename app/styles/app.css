@@ -197,9 +197,6 @@ html {
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  -webkit-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
 }
 [flex] {
   display: -webkit-flex;
@@ -228,10 +225,6 @@ body {
 }
 h1 {
   font-weight: 100;
-}
-h2,
-h3 {
-  font-weight: 300;
 }
 .container {
   height: 100%;
@@ -263,12 +256,60 @@ h3 {
   border-radius: 50%;
   border: 3px solid white;
 }
+.title.ng-enter {
+  -webkit-transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  -o-transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  opacity: 1;
+}
+.title.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.title.ng-leave {
+  -webkit-transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  -o-transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  opacity: 1;
+}
+.title.ng-leave.ng-leave-active {
+  opacity: 1;
+}
+.question {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  -o-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+}
+.question.ng-enter,
+.question.ng-leave {
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  -moz-transition: -moz-transform 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  -o-transition: -o-transform 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition: transform 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+.question.ng-enter,
+.question.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+.question.ng-leave,
+.question.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
 .answer-container {
-  margin: 10px;
+  margin: 10px 0;
   padding: 5px;
   background-color: white;
   border: 1px solid #ccc;
   color: #333;
+  cursor: pointer;
 }
 .checkbox {
   width: 50px;
