@@ -33,11 +33,9 @@
                  * the values
                  */
                 $scope.$watch('data.current', function (newValue, oldValue) {
-                    //if (newValue !== oldValue) {
-                        $rootScope.bg = null;
-                        $scope.answerIndex = null;
-                        answerIndex = null;
-                    //}
+                    $rootScope.bg = null;
+                    $scope.answerIndex = null;
+                    answerIndex = null;
                 });
 
                 $scope.update = function (index) {
