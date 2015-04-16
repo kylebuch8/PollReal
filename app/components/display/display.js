@@ -30,6 +30,13 @@
 
                 syncObject.$bindTo($scope, 'data');
 
+                $scope.$watch('data.current', function (newValue) {
+                    if (Number.isInteger(newValue)) {
+                        $scope.labels = null;
+                        $scope.values = null;
+                    }
+                });
+
                 $scope.$watch('data.questions[data.current].answers', function (answers) {
                     if (answers) {
                         if (!$scope.labels) {
