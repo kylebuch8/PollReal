@@ -33,14 +33,15 @@
                  * the values
                  */
                 $scope.$watch('data.current', function (newValue, oldValue) {
-                    if (newValue !== oldValue) {
+                    //if (newValue !== oldValue) {
                         $rootScope.bg = null;
                         $scope.answerIndex = null;
-                    }
+                        answerIndex = null;
+                    //}
                 });
 
                 $scope.update = function (index) {
-                    if (typeof answerIndex !== 'undefined' && answerIndex !== index) {
+                    if (answerIndex !== null && answerIndex !== index) {
                         var oldUpdateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + answerIndex + '/responses');
                         var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
 
