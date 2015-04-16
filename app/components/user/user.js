@@ -54,13 +54,15 @@
 
                         answerIndex = index;
                     } else {
-                        var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
+                        if (answerIndex !== index) {
+                            var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
 
-                        updateRef.transaction(function (currentNumResponses) {
-                            return currentNumResponses += 1;
-                        });
+                            updateRef.transaction(function (currentNumResponses) {
+                                return currentNumResponses += 1;
+                            });
 
-                        answerIndex = index;
+                            answerIndex = index;
+                        }
                     }
 
                     $scope.answerIndex = answerIndex;
