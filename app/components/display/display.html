@@ -1,9 +1,6 @@
-<div ng-if="data.questions[data.current].active">
-    <h1>{{data.questions[data.current].question}}</h1>
-
-    <div ng-repeat="answer in data.questions[data.current].answers">
-        <div>{{answer.text}} - {{answer.responses}}</div>
+<div class="container" flex column center-items center>
+    <div class="display-container" ng-if="data.questions[data.current].active" flex center-items column>
+        <h1>{{data.questions[data.current].question}}</h1>
+        <chart></chart>
     </div>
-
-    <chart></chart>
 </div>
