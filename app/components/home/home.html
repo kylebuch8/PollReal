@@ -1,8 +1,13 @@
 <div class="container">
     Home
-    <form name="homeForm" novalidate ng-submit="homeForm.$valid && submit()">
+    <form name="homeForm" novalidate ng-submit="submit()">
         <input type="text" name="id" ng-model="id" placeholder="ID" required>
         <button class="btn">Go</button>
+        <div ng-messages="homeForm.id.$error" ng-if="homeForm.id.$dirty || submitted" role="alert">
+            <div ng-message="required">
+                A valid ID is required
+            </div>
+        </div>
     </form>
 
     <button class="btn">Login with Google</button>

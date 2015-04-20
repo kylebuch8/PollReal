@@ -3,7 +3,8 @@
 
     /*global angular*/
     angular.module('home', [
-        'ngRoute'
+        'ngRoute',
+        'ngMessages'
     ])
 
         .config(['$routeProvider', function ($routeProvider) {
@@ -19,6 +20,12 @@
             '$location',
             function ($scope, $location) {
                 $scope.submit = function () {
+                    $scope.submitted = true;
+
+                    if (!$scope.homeForm.$valid) {
+                        return;
+                    }
+
                     $location.path('/' + $scope.id);
                 };
             }
