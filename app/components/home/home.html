@@ -1,14 +1,21 @@
-<div class="container">
-    Home
-    <form name="homeForm" novalidate ng-submit="submit()">
-        <input type="text" name="id" ng-model="id" placeholder="ID" required>
-        <button class="btn">Go</button>
-        <div ng-messages="homeForm.id.$error" ng-if="homeForm.id.$dirty || submitted" role="alert">
-            <div ng-message="required">
-                A valid ID is required
-            </div>
-        </div>
-    </form>
+<div class="container home">
+    <section flex center>
+        <h1>Pollerize</h1>
+    </section>
 
-    <button class="btn">Login with Google</button>
+    <section flex center>
+        <form name="homeForm" novalidate ng-submit="submit()">
+            <input type="text" name="id" ng-model="id" placeholder="ID" required>
+            <button class="btn">Go</button>
+            <div ng-messages="homeForm.id.$error" ng-if="homeForm.id.$dirty || submitted" role="alert">
+                <div ng-message="required">
+                    A valid ID is required
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section flex center>
+        <button class="btn">Login with Google</button>
+    </section>
 </div>
