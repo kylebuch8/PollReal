@@ -14,8 +14,8 @@
                     controller: 'HomeController',
                     resolve: {
                         "currentAuth": ["PollerizeAuth", function(Auth) {
-                          // $waitForAuth returns a promise so the resolve waits for it to complete
-                          return Auth.$waitForAuth();
+                            // $waitForAuth returns a promise so the resolve waits for it to complete
+                            return Auth.$waitForAuth();
                         }]
                     }
                 });
@@ -33,8 +33,9 @@
 
                 // any time auth status updates, add the user data to scope
                 $scope.auth.$onAuth(function(authData) {
-                  $scope.authData = authData;
+                    $scope.authData = authData;
                 });
+
                 $scope.submit = function () {
                     $scope.submitted = true;
 

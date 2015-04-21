@@ -9,10 +9,10 @@
         .constant('FIREBASE_URL', 'https://pollerize.firebaseio.com')
 
         .factory('PollerizeAuth', ["$firebaseAuth", "FIREBASE_URL",
-          function($firebaseAuth, FIREBASE_URL) {
-            var ref = new Firebase(FIREBASE_URL, "pollerize");
-            return $firebaseAuth(ref);
-          }
+            function($firebaseAuth, FIREBASE_URL) {
+                var ref = new Firebase(FIREBASE_URL, "pollerize");
+                return $firebaseAuth(ref);
+            }
         ])
 
         .factory('PollerizeSession', ['$firebaseObject', 'FIREBASE_URL', function ($firebaseObject, FIREBASE_URL) {
