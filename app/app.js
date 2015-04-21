@@ -2,15 +2,23 @@
     'use strict';
 
     /*global angular*/
-    angular.module('pollReal', [
+    angular.module('pollerize', [
         'firebase',
         'home',
         'user',
         'moderator',
-        'display'
+        'display',
+        'services.pollerize'
     ])
-
-        .constant('FIREBASE_URL', 'https://pollreal.firebaseio.com');
+        .run(['$rootScope', '$location', function ($rootScope, $location) {
+           $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+              // We can catch the error thrown when the $requireAuth promise is rejected
+              // and redirect the user back to the home page
+              if (error === "AUTH_REQUIRED") {
+                $location.path("/");
+              }
+            });
+        }]);
 
     /*
      * fastclick!!!

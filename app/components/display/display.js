@@ -21,14 +21,11 @@
             '$rootScope',
             '$routeParams',
             '$filter',
-            '$firebaseObject',
-            'FIREBASE_URL',
-            function ($scope, $rootScope, $routeParams, $filter, $firebaseObject, FIREBASE_URL) {
-                var ref = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id),
-                    syncObject = $firebaseObject(ref),
-                    topAnswer;
+            'PollerizeSession',
+            function ($scope, $rootScope, $routeParams, $filter, Session) {
+                var topAnswer;
 
-                syncObject.$bindTo($scope, 'data');
+                Session($routeParams.id).$bindTo($scope, 'data');
 
                 $scope.$watch('data.current', function (newValue) {
                     if (Number.isInteger(newValue)) {

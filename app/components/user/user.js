@@ -19,14 +19,12 @@
             '$scope',
             '$rootScope',
             '$routeParams',
-            '$firebaseObject',
-            'FIREBASE_URL',
-            function ($scope, $rootScope, $routeParams, $firebaseObject, FIREBASE_URL) {
-                var ref = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id),
-                    syncObject = $firebaseObject(ref),
-                    answerIndex;
+            'PollerizeSession',
+            'PollerizeQuestion',
+            function ($scope, $rootScope, $routeParams, Session, Question) {
+                var answerIndex;
 
-                syncObject.$bindTo($scope, "data");
+                Session($routeParams.id).$bindTo($scope, "data");
 
                 /*
                  * when the moderator changes the question, be sure to reset
@@ -40,8 +38,8 @@
 
                 $scope.update = function (index) {
                     if (answerIndex !== null && answerIndex !== index) {
-                        var oldUpdateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + answerIndex + '/responses');
-                        var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
+                        var oldUpdateRef = Question($routeParams.id, $scope.data.current, answerIndex);
+                        var updateRef = Question($routeParams.id, $scope.data.current, index);
 
 
                         oldUpdateRef.transaction(function (currentNumResponses) {

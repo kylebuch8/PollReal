@@ -5,8 +5,8 @@
     </div>
 
     <div class="presenter" flex column center center-items>
-        <div class="profile-pic" ng-style="{'background-image': 'url(https://lh3.googleusercontent.com/-1zEfFKV5gKs/AAAAAAAAAAI/AAAAAAAAG0o/90oM4VFz7gI/s92-c-k-no/photo.jpg)'}"></div>
-        <h2>Kyle Buchanan</h2>
+        <div class="profile-pic" ng-style="{'background-image': 'url('+data.owner.picture+ ')'}"></div>
+        <h2 ng-bind="data.owner.name"></h2>
     </div>
 </div>
 

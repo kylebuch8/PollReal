@@ -4,6 +4,7 @@
     </section>
 
     <section flex center>
+		
         <form name="homeForm" novalidate ng-submit="submit()">
             <input type="text" name="id" ng-model="id" placeholder="ID" required>
             <button class="btn">Go</button>
@@ -16,6 +17,13 @@
     </section>
 
     <section flex center>
-        <button class="btn">Login with Google</button>
+        <div ng-show="authData">
+        	<p>Hello, {{ authData.google.displayName }}</p>
+        	<button ng-click="auth.$unauth()">Logout</button>
+    	</div>
+    	<div ng-hide="authData">
+    	    <p>Welcome, please log in.</p>
+	        <button class="btn" ng-click="auth.$authWithOAuthPopup('google')">Login With Google</button>
+		</div>
     </section>
 </div>
