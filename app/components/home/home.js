@@ -11,14 +11,30 @@
             $routeProvider
                 .when('/', {
                     templateUrl: 'components/home/home.html',
-                    controller: 'HomeController'
+                    controller: 'HomeController',
+                    resolve: {
+                        "currentAuth": ["PollerizeAuth", function(Auth) {
+                          // $waitForAuth returns a promise so the resolve waits for it to complete
+                          return Auth.$waitForAuth();
+                        }]
+                    }
                 });
         }])
 
         .controller('HomeController', [
             '$scope',
             '$location',
-            function ($scope, $location) {
+            'PollerizeAuth',
+            'currentAuth',
+            'PollerizeSession',
+            function ($scope, $location, Auth, currentAuth, Sessions) {
+                $scope.auth = Auth;
+                $scope.sessions = Sessions();
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                  $scope.authData = authData;
+                });
                 $scope.submit = function () {
                     $scope.submitted = true;
 
