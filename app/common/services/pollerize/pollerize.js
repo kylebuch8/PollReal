@@ -47,5 +47,58 @@
                     return ref;
                 }
             }
+        ])
+
+        .factory('Palette', [
+            '$q',
+            'FIREBASE_URL',
+            function ($q, FIREBASE_URL) {
+                var Palette = {},
+                    ref = new Firebase(FIREBASE_URL + '/palette'),
+                    colors = [];
+
+                Palette.get = function () {
+                    var deferred = $q.defer();
+
+                    if (!colors.length) {
+                        ref.once('value', function (snap) {
+                            colors = snap.val();
+                            deferred.resolve(colors);
+                        });
+                    } else {
+                        deferred.resolve(colors);
+                    }
+
+                    return deferred.promise;
+                };
+
+                Palette.pick = function (usedColors) {
+                    var deferred = $q.defer(),
+                        filteredColors,
+                        randomColor;
+
+                    if (!colors.length) {
+                        return Palette.get().then(function () {
+                            return Palette.pick(usedColors);
+                        });
+                    }
+
+                    if (!usedColors || !usedColors.length) {
+                        filteredColors = colors;
+                    } else {
+                        filteredColors = colors.filter(function (color) {
+                            return (usedColors.indexOf(color) > -1) ? false : true;
+                        });
+                    }
+
+                    randomColor = filteredColors[Math.floor(Math.random() * filteredColors.length)];
+
+                    deferred.resolve(randomColor);
+
+                    return deferred.promise;
+                };
+
+                return Palette;
+            }
         ]);
 }());
