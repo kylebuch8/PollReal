@@ -6,7 +6,7 @@
         'firebase'
     ])
 
-        .constant('FIREBASE_URL', 'https://pollreal.firebaseio.com')
+        .constant('FIREBASE_URL', 'https://pollerize.firebaseio.com')
 
         .factory('PollerizeAuth', ["$firebaseAuth", "FIREBASE_URL",
           function($firebaseAuth, FIREBASE_URL) {
@@ -36,10 +36,8 @@
 
         .factory('PollerizeQuestion', ['$firebaseObject', 'FIREBASE_URL', function ($firebaseObject, FIREBASE_URL) {
             return function(poll, question, answer) {
-                // create a reference to the Firebase where we will store our data
                 var ref = new Firebase(FIREBASE_URL + '/sessions/' + poll + '/questions/' + question + '/answers/' + answer + '/responses');
-
-                return $firebaseObject(ref);
+                return ref;
             }
         }]);
 }());

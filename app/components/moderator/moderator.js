@@ -81,18 +81,16 @@
 
             $scope.nextQuestion = function() {
                 $scope.data.questions[$scope.data.current].active=false;
+                if($scope.next === 'Add Question') {
+                    $scope.data.questions.push({active: false, answers: [{color: "#3F51B5", responses: 0, text: "Default Answer"}], question: 'New Question', totalResponses: 0});
+                }
                 $scope.data.current = $scope.data.current < $scope.data.questions.length-1 ? $scope.data.current+1 : $scope.data.questions.length-1;
                 $scope.next = $scope.data.current === $scope.data.questions.length-1 ? 'Add Question' : 'Next-->';
             };
 
-            $scope.addQuestion = function() {
-                if(typeof $scope.data.questions !== 'undefined' ) {
-                    $scope.data.questions.push({active: false, answers: [], question: 'New Question', totalResponses: 0});
-                } else {
-                    $scope.data.questions = [];
-                    $scope.data.questions.push({active: false, answers: [], question: 'New Question', totalResponses: 0});
-                }
-            }
+            $scope.removeQuestion = function() {
+
+            };
         }])
 
         .directive('contenteditable', ['$sce', function($sce) {

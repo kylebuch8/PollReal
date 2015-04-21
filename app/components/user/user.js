@@ -37,10 +37,9 @@
                 });
 
                 $scope.update = function (index) {
+                    var updateRef = Question($routeParams.id, $scope.data.current, index);
                     if (answerIndex !== null && answerIndex !== index) {
                         var oldUpdateRef = Question($routeParams.id, $scope.data.current, answerIndex);
-                        var updateRef = Question($routeParams.id, $scope.data.current, index);
-
 
                         oldUpdateRef.transaction(function (currentNumResponses) {
                             return currentNumResponses -= 1;
@@ -53,7 +52,6 @@
                         answerIndex = index;
                     } else {
                         if (answerIndex !== index) {
-                            var updateRef = new Firebase(FIREBASE_URL + '/sessions/' + $routeParams.id + '/questions/' + $scope.data.current + '/answers/' + index + '/responses');
 
                             updateRef.transaction(function (currentNumResponses) {
                                 return currentNumResponses += 1;
