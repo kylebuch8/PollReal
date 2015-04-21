@@ -10,6 +10,8 @@
         'display',
         'services.pollerize'
     ])
+        .constant('FIREBASE_URL', 'https://pollerize.firebaseio.com')
+        
         .run(['$rootScope', '$location', function ($rootScope, $location) {
            $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
               // We can catch the error thrown when the $requireAuth promise is rejected

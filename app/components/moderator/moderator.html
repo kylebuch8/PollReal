@@ -1,22 +1,24 @@
-<h1>Moderator - <span ng-bind="data.owner.name"></span></h1>
+<div class="container">
+    <h1>Moderator - <span ng-bind="data.owner.name"></span></h1>
 
-<h2 contenteditable="true" ng-model="data.title" ng-bind="data.title"></h2>
+    <h2 contenteditable="true" ng-model="data.title" ng-bind="data.title"></h2>
 
-<h3 contenteditable="true" ng-model="data.questions[data.current].question"></h3>
-<label><input type="checkbox" ng-model="data.questions[data.current].active"> Active</label>
-<ul>
-    <li ng-repeat="answer in data.questions[data.current].answers">
-        <label><input ng-value="answer.text" ng-model="answer.text"></label> -
-        <span ng-bind="answer.responses"></span>
-        <button ng-click="answer.responses = 0">Reset</button> -
-        <label><input ng-value="answer.color" ng-model="answer.color"></label>
-        <button ng-click="removeAnswer($index)">[-]</button>
-    </li>
-    <li><button ng-click="addAnswer()">[+]</button></li>
-</ul>
+    <h3 contenteditable="true" ng-model="data.questions[data.current].question"></h3>
+    <label><input type="checkbox" ng-model="data.questions[data.current].active"> Active</label>
+    <ul>
+        <li ng-repeat="answer in data.questions[data.current].answers">
+            <label><input ng-value="answer.text" ng-model="answer.text"></label> -
+            <span ng-bind="answer.responses"></span>
+            <button ng-click="answer.responses = 0">Reset</button> -
+            <label><input ng-value="answer.color" ng-model="answer.color"></label>
+            <button ng-click="removeAnswer($index)">[-]</button>
+        </li>
+        <li><button ng-click="addAnswer()">[+]</button></li>
+    </ul>
 
-<div style="text-align:center;">
-    <button style="float:left;" ng-show="data.current > 0" ng-click="previousQuestion()" ng-bind="previous">&lt;-- Prev</button>
-    <span ng-bind="data.current+1"></span> | <span ng-bind="data.questions.length"></span>
-    <button style="float:right;" ng-click="nextQuestion()" ng-bind="next">Next --&gt;</button>
+    <div style="text-align:center;">
+        <button style="float:left;" ng-show="data.current > 0" ng-click="previousQuestion()" ng-bind="previous">&lt;-- Prev</button>
+        <span ng-bind="data.current+1"></span> | <span ng-bind="data.questions.length"></span>
+        <button style="float:right;" ng-click="nextQuestion()" ng-bind="next">Next --&gt;</button>
+    </div>
 </div>
