@@ -31,45 +31,62 @@
             'PollerizeSession',
             'Palette',
             function ($scope, $routeParams, Auth, Session, Palette) {
-                Session($routeParams.id).$bindTo($scope, "data").then(
-                    function() {
-                        if (typeof $scope.data.owner === 'undefined') {
-                            $scope.data.owner = {
-                                id: Auth.uid,
-                                name: Auth.google.displayName,
-                                link: Auth.google.cachedUserProfile.link,
-                                picture: Auth.google.cachedUserProfile.picture
+                /*
+                 * get all of the colors first, then work through creating
+                 * the session
+                 */
+                Palette
+                    .get()
+                    .then(function () {
+                        Session($routeParams.id).$bindTo($scope, "data")
+                            .then(function () {
+                                if (typeof $scope.data.owner === 'undefined') {
+                                    $scope.data.owner = {
+                                        id: Auth.uid,
+                                        name: Auth.google.displayName,
+                                        link: Auth.google.cachedUserProfile.link,
+                                        picture: Auth.google.cachedUserProfile.picture
+                                    }
+                                }
+
+                                if (typeof $scope.data.active === 'undefined') {
+                                    $scope.data.active = false;
+                                }
+
+                                if (typeof $scope.data.current === 'undefined') {
+                                    $scope.data.current = 0;
+                                }
+
+                                if (typeof $scope.data.title === 'undefined') {
+                                    $scope.data.title = "Great New Poll";
+                                }
+
+                                /*
+                                 * TODO: select random color from palette and keep
+                                 * track of the used colors for each question
+                                 */
+                                if (typeof $scope.data.questions === 'undefined') {
+                                    $scope.data.questions = [];
+
+                                    Palette
+                                        .pick()
+                                        .then(function (color) {
+                                            $scope.data.questions[0] = {
+                                                active: false,
+                                                answers: [{
+                                                    color: color,
+                                                    responses: 0,
+                                                    text: "Default Answer"
+                                                }],
+                                                question: "Bold New Question",
+                                                totalResponses: 0
+                                            };
+                                        });
+                                }
+                            }, function (error) {
+
                             }
-                        }
-
-                        if (typeof $scope.data.active === 'undefined') {
-                            $scope.data.active = false;
-                        }
-
-                        if (typeof $scope.data.current === 'undefined') {
-                            $scope.data.current = 0;
-                        }
-
-                        if (typeof $scope.data.title === 'undefined') {
-                            $scope.data.title = "Great New Poll";
-                        }
-
-                        if (typeof $scope.data.questions === 'undefined') {
-                            $scope.data.questions = [];
-                            $scope.data.questions[0] = {
-                                active: false,
-                                answers: [{
-                                    color: "#3F51B5",
-                                    responses: 0,
-                                    text: "Default Answer"
-                                }],
-                                question: "Bold New Question",
-                                totalResponses: 0
-                            };
-                        }
-                    },
-                    function(error) {
-
+                        );
                     });
 
                 $scope.previous = "<--Prev";
