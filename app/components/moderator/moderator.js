@@ -31,6 +31,8 @@
             'PollerizeSession',
             'Palette',
             function ($scope, $routeParams, Auth, Session, Palette) {
+                var answersColors = [];
+
                 /*
                  * get all of the colors first, then work through creating
                  * the session
@@ -81,6 +83,10 @@
                                                 question: "Bold New Question",
                                                 totalResponses: 0
                                             };
+
+                                            answersColors.push({
+                                                0: [color]
+                                            });
                                         });
                                 }
                             }, function (error) {
@@ -102,7 +108,7 @@
                             responses: 0,
                             text: '',
                             color: color
-                        })
+                        });
                     });
                 };
 
