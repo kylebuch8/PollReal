@@ -89,14 +89,17 @@
                                             });
                                         });
                                 }
+
+                                $scope.next = $scope.data.current === $scope.data.questions.length-1 ? 'Add Question' : 'Next-->';
+                                $scope.previous = "<--Prev";
+
                             }, function (error) {
 
                             }
                         );
                     });
 
-                $scope.previous = "<--Prev";
-                $scope.next = $scope.data.current === $scope.data.questions.length-1 ? 'Add Question' : 'Next-->';
+
 
                 /*
                  * TODO: keep track of selected colors. not sure if we should do
