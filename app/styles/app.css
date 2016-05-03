@@ -337,6 +337,7 @@ h1 {
   height: 92px;
   border-radius: 50%;
   border: 3px solid white;
+  background-size: contain;
 }
 .title.ng-enter {
   -webkit-transition: opacity 0.5s cubic-bezier(0.465, 0.183, 0.153, 0.946);
